@@ -1,0 +1,47 @@
+PODS:
+  - Alamofire (5.6.4)
+  - aws_integration_test (0.0.1):
+    - Alamofire (~> 5.6.4)
+    - Flutter
+    - Telegraph (~> 0.30.0)
+  - CocoaAsyncSocket (7.6.5)
+  - Flutter (1.0.0)
+  - HTTPParserC (2.9.4)
+  - integration_test (0.0.1):
+    - Flutter
+  - Telegraph (0.30.0):
+    - CocoaAsyncSocket (~> 7.6)
+    - HTTPParserC (~> 2.9)
+
+DEPENDENCIES:
+  - aws_integration_test (from `.symlinks/plugins/aws_integration_test/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CocoaAsyncSocket
+    - HTTPParserC
+    - Telegraph
+
+EXTERNAL SOURCES:
+  aws_integration_test:
+    :path: ".symlinks/plugins/aws_integration_test/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  aws_integration_test: 2e975751dd78addb22158e1a2c9150d11bc51e78
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  HTTPParserC: aea14c3d2d4ac5beb3988781daa36dfa62e0d9ef
+  integration_test: a1e7d09bd98eca2fc37aefd79d4f41ad37bdbbe5
+  Telegraph: 12576b119324138e4929792af9e5a1085c2ecbc1
+
+PODFILE CHECKSUM: c609c8601ed26e333815cf49c76478d455bb6529
+
+COCOAPODS: 1.12.0
