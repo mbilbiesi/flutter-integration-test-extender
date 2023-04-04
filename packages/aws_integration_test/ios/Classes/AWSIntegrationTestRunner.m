@@ -28,25 +28,6 @@
     return self;
 }
 
-- (void)handlePermissions {
-    // Handle permissions
-    XCUIApplication *springboard = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.springboard"];
-    XCUIElementQuery *systemAlerts = springboard.alerts;
-    
-    NSDate *startTime = [NSDate date];
-    NSTimeInterval timeout = 30.0; // Timeout after 30 seconds
-    while (!systemAlerts.buttons[@"Allow"].exists) {
-        [NSRunLoop.currentRunLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
-        if ([[NSDate date] timeIntervalSinceDate:startTime] > timeout) {
-            // Timeout occurred, handle it
-            break;
-        }
-    }
-    if (systemAlerts.buttons[@"Allow"].exists) {
-        [systemAlerts.buttons[@"Allow"] tap];
-    }
-}
-
 
 - (void)testIntegrationTestWithResults:(NSDictionary<NSString *, NSString *> *)tests
                                       : (NS_NOESCAPE AWSIntegrationTestResults)testResult {
