@@ -5,13 +5,13 @@
 Pod::Spec.new do |s|
   s.name             = 'aws_integration_test'
   s.version          = '0.0.1'
-  s.summary          = 'Flutter plugin which helps to expand the functionalities'
+  s.summary          = 'Flutter plugin which helps running integration tests on AWS device farm'
   s.description      = <<-DESC
 A new Flutter plugin project.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'http://gostudent.org'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'GoStudent.org' => 'mazen.bilbiesi@gostudent.org' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'

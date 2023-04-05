@@ -13,13 +13,13 @@ import Telegraph
     @objc public private(set) var storedResults: [String: String]? = nil
     var server: Server?
     
-    @objc public func start() {
+    @objc public func start(port: Int) {
         server = Server()
         server?.route(.POST, "/results", storeResult)
         server?.route(.GET, "/results", retrieveResult)
         
         do {
-            try server?.start(port: 8081)
+            try server?.start(port: port)
             print("TestServer successfully started on:  \(server?.port ?? -1)")
         } catch {
             print("Failed to start TestServer: \(error)")
