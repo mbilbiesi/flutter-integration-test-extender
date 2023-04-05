@@ -9,21 +9,30 @@ import Foundation
 import Alamofire
 
 @objc public class TestServerClient: NSObject {
-    @objc public func sendPostRequestWithAlamofire(payload: [String: Any]) {
-        let url = "http://localhost:8081/results"
+    
+    let baseURL: String
+    
+    @objc public init(baseURL: String) {
+        self.baseURL = baseURL
+    }
+    
+    @objc public func sendPostRequestToStoreTestResult(path: String, payload: [String: Any]) {
+        let url = "\(baseURL)/\(path)"
         let headers: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
         
-        AF.request(url, method: .post, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                print("Request successful")
-                print("Response: \(value)")
-            case .failure(let error):
-                print("Error: \(error)")
+        AF.request(url, method: .post, parameters: payload, encoding: JSONEncoding.default, headers: headers)
+            .validate()
+            .responseDecodable(of: String.self) { response in
+                switch response.result {
+                case .success(let value):
+                    print("Request successful")
+                    print("Response: \(value)")
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
             }
-        }
     }
-
+    
 }

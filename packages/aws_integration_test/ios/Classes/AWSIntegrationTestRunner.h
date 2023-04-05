@@ -54,7 +54,7 @@ static XCUIElementQuery *systemAlerts;\
     [app activate];\
     \
     TestServer *server = [[TestServer alloc] init] ;\
-    [server start];\
+    [server startWithPort:8081];\
     \
     /* Spin the runloop. */ \
     while (!server.storedResults) {\
