@@ -10,14 +10,14 @@ import Alamofire
 
 @objc public class TestServerClient: NSObject {
     
-    let baseURL: String
+    private let baseURL: URL
     
-    @objc public init(baseURL: String) {
+    @objc public init(baseURL: URL) {
         self.baseURL = baseURL
     }
     
     @objc public func sendPostRequestToStoreTestResult(path: String, payload: [String: Any]) {
-        let url = "\(baseURL)/\(path)"
+        let url = baseURL.appendingPathComponent(path)
         let headers: HTTPHeaders = [
             "Content-Type": "application/json"
         ]

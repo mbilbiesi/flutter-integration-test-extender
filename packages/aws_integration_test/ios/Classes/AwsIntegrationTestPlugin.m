@@ -59,7 +59,9 @@ static NSString *const kMethodRevertImage = @"revertFlutterImage";
         self.testResults = call.arguments[@"results"];
         
         /* Send the test results to TestServer which will keep it in memory */
-        TestServerClient *serverClient = [[TestServerClient alloc] initWithBaseURL:@"http://localhost:8081"];
+        NSString *serverUrl = [NSString stringWithFormat:@"http://%@:%ld", TestServerConfig.serverUrl, (long)TestServerConfig.serverPort];
+        NSURL *baseURL = [NSURL URLWithString:serverUrl];
+        TestServerClient *serverClient = [[TestServerClient alloc] initWithBaseURL:baseURL];
         [serverClient sendPostRequestToStoreTestResultWithPath:@"results" payload:_testResults];
         
         result(nil);
