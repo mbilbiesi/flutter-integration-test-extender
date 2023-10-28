@@ -5,20 +5,20 @@
 Pod::Spec.new do |s|
   s.name             = 'aws_integration_test'
   s.version          = '0.0.1'
-  s.summary          = 'Flutter plugin which helps to expand the functionalities'
+  s.summary          = 'Flutter plugin which helps running integration tests on AWS device farm'
   s.description      = <<-DESC
 A new Flutter plugin project.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'http://gostudent.org'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'GoStudent.org' => 'mazen.bilbiesi@gostudent.org' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.weak_framework = 'XCTest'
   s.ios.framework  = 'UIKit'
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '12.1'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = {
