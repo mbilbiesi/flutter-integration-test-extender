@@ -10,7 +10,7 @@
 
 @import UIKit;
 
-static NSString *const kIntegrationTestPluginChannel = @"plugins.flutter.io/integration_test";
+static NSString *const kIntegrationTestPluginChannel = @"plugins.flutter.io/aws_integration_test";
 static NSString *const kMethodTestFinished = @"allTestsFinished";
 static NSString *const kMethodScreenshot = @"captureScreenshot";
 static NSString *const kMethodConvertSurfaceToImage = @"convertFlutterSurfaceToImage";
