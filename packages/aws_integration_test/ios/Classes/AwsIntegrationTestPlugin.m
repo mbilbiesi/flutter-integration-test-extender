@@ -10,7 +10,7 @@
 
 @import UIKit;
 
-static NSString *const kIntegrationTestPluginChannel = @"plugins.flutter.io/integration_test";
+static NSString *const kIntegrationTestPluginChannel = @"plugins.flutter.io/aws_integration_test";
 static NSString *const kMethodTestFinished = @"allTestsFinished";
 static NSString *const kMethodScreenshot = @"captureScreenshot";
 static NSString *const kMethodConvertSurfaceToImage = @"convertFlutterSurfaceToImage";
@@ -57,20 +57,20 @@ static NSString *const kMethodRevertImage = @"revertFlutterImage";
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
     if ([call.method isEqualToString:kMethodTestFinished]) {
         self.testResults = call.arguments[@"results"];
-        
+
         /* Send the test results to TestServer which will keep it in memory */
         NSString *serverUrl = [NSString stringWithFormat:@"http://%@:%ld", TestServerConfig.serverUrl, (long)TestServerConfig.serverPort];
         NSURL *baseURL = [NSURL URLWithString:serverUrl];
         TestServerClient *serverClient = [[TestServerClient alloc] initWithBaseURL:baseURL];
         [serverClient sendPostRequestToStoreTestResultWithPath:@"results" payload:_testResults];
-        
+
         result(nil);
     } else if ([call.method isEqualToString:kMethodScreenshot]) {
         // If running as a native Xcode test, attach to test.
         UIImage *screenshot = [self capturePngScreenshot];
         NSString *name = call.arguments[@"name"];
         _capturedScreenshotsByName[name] = screenshot;
-        
+
         // Also pass back along the channel for the driver to handle.
         NSData *pngData = UIImagePNGRepresentation(screenshot);
         result([FlutterStandardTypedData typedDataWithBytes:pngData]);
@@ -85,15 +85,15 @@ static NSString *const kMethodRevertImage = @"revertFlutterImage";
 
 - (UIImage *)capturePngScreenshot {
     UIWindow *window = [UIApplication.sharedApplication.windows
-                        filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"keyWindow = YES"]].firstObject;
+            filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"keyWindow = YES"]].firstObject;
     CGRect screenshotBounds = window.bounds;
     UIImage *image;
-    
+
     UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithBounds:screenshotBounds];
     image = [renderer imageWithActions:^(UIGraphicsImageRendererContext *rendererContext) {
         [window drawViewHierarchyInRect:screenshotBounds afterScreenUpdates:YES];
     }];
-    
+
     return image;
 }
 
