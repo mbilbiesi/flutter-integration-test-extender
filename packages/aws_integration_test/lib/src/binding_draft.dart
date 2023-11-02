@@ -60,6 +60,39 @@ Thrown by AWSIntegrationTest.
     return _instance!;
   }
 
+  static void sendResults() async {
+    final testBinding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+    try {
+      if (!Platform.isIOS) {
+        return;
+      }
+
+      if (!_shouldReportResultsToNative) {
+        return;
+      }
+
+      await awsIntegrationTestChannel.invokeMethod<void>(
+        'allTestsFinished',
+        <String, dynamic>{
+          // ignore: invalid_use_of_visible_for_testing_member
+          'results': testBinding.results.map<String, dynamic>((name, result) {
+            if (result is Failure) {
+              return MapEntry<String, dynamic>(name, result.details);
+            }
+
+            return MapEntry<String, Object>(name, result);
+          }),
+        },
+      );
+    } on MissingPluginException {
+      debugPrint('''
+Warning: AWSIntegrationTest plugin was not detected.
+
+Thrown by AWSIntegrationTest.
+''');
+    }
+  }
+
   // factory AwsIntegrationTestBinding.ensureInitialized() {
   //   if (_instance == null) {
   //     AwsIntegrationTestBinding();
