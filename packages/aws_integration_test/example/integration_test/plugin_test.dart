@@ -5,11 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 void main() async {
-  final binding = AwsIntegrationTestBinding.ensureInitialized();
+  final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final binding2 = AwsIntegrationTestBinding.ensureInitialized();
   binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
   testWidgets('tap on the floating action button, verify counter', (tester) async {
-    // IntegrationTestWidgetsFlutterBinding.ensureInitialized();
     // Load app widget.
     await tester.pumpWidget(const MyApp());
 
