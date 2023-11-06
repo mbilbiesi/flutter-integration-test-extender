@@ -38,9 +38,10 @@ class AwsIntegrationTestBinding {
             // ignore: invalid_use_of_visible_for_testing_member
             'results': testBinding.results.map<String, dynamic>((name, result) {
               if (result is Failure) {
+                print("AWS plugin #1 ${result.toJson()}");
                 return MapEntry<String, dynamic>(name, result.details);
               }
-
+              print("AWS plugin #2 ${result.toString()}");
               return MapEntry<String, Object>(name, result);
             }),
           },
@@ -77,9 +78,10 @@ Thrown by AWSIntegrationTest.
           // ignore: invalid_use_of_visible_for_testing_member
           'results': testBinding.results.map<String, dynamic>((name, result) {
             if (result is Failure) {
+              print("AWS plugin #1 ${result.toJson()}");
               return MapEntry<String, dynamic>(name, result.details);
             }
-
+            print("AWS plugin #2 ${result.toString()}");
             return MapEntry<String, Object>(name, result);
           }),
         },
