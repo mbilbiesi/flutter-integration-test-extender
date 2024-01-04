@@ -1,6 +1,6 @@
 name: aws_integration_test
 description: A utility plugin to extend the functionalities of Flutter integration test package
-version: 0.0.1
+version: 1.0.0
 homepage:
 
 environment:
