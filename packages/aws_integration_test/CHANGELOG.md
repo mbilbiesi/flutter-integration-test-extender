@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* this plugin which controls running the flutter integration tests on AWS and handle the native alert pop-ups

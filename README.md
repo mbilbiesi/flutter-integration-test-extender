@@ -1,2 +1,2 @@
-# flutter-integration-test-extender
+# flutter-test-extender
 An adapter for flutter integration-test package
